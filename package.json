@@ -1,0 +1,75 @@
+{
+  "name": "Movie-app",
+  "version": "0.1.0",
+  "description": "Browse the movie you like",
+  "main": "index.html",
+  "scripts": {
+    "production": "export NODE_ENV=production && webpack && npm start",
+    "dev": "export NODE_ENV=development && webpack-dev-server --devtool eval --progress --colors --content-base dist",
+    "eslint": "eslint src/js test",
+    "fix-eslint": "eslint src --fix",
+    "test:watch": "jest test --watch",
+    "test": "jest test"
+  },
+  "jest": {
+    "modulePaths": [
+      "src"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "setupTestFrameworkScriptFile": "./test/enzyme_adapter.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "react-movie-list"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Jocelyn",
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.0.1",
+    "babel-jest": "^23.2.0",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.1.4",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.3.0",
+    "node-sass": "^4.9.2",
+    "react-hot-loader": "^4.3.3",
+    "react-test-renderer": "^16.0.0",
+    "redux-mock-store": "^1.5.3",
+    "sass-loader": "^7.0.3",
+    "sinon": "^6.1.4",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.15.1",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
