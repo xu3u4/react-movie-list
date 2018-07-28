@@ -25,6 +25,8 @@ module.exports = {
     "import/extensions": 0,
     "import/prefer-default-export": 0,
     "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/interactive-supports-focus": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
     "arrow-body-style": 0,
     "arrow-parens": 0,
     "no-param-reassign": ["error", { "props": false }],
