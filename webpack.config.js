@@ -62,7 +62,8 @@ module.exports = {
     hot: true,
     host: 'localhost',
     port: 3000,
-    contentBase: path.join(__dirname, "dist")
+    contentBase: path.join(__dirname, "dist"),
+    historyApiFallback: true
   },
   resolve: {
     modules: [ 'src', 'node_modules' ]
