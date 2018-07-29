@@ -14,7 +14,7 @@ const Movie = ({ movieDetails }) => {
 
   return (
     <div className="flex movie-page">
-      <Album images={movieDetails.images.backdrops.slice(0, 5)} />
+      <Album images={movieDetails.images.backdrops} />
       <section className="movie-info">
         <Link to="/home" className="go-back">
           <IconText icon="icon-left-arrow" text="Back to list" />
