@@ -9,11 +9,12 @@
 
   .search-input {
     background-color: transparent;
-    border: 1px solid black;
+    border: 1px solid $dark-grey;
     color: white;
     font-size: 15px;
     padding: 4px 8px;
     width: 250px;
+    margin: 1em;
     max-width: 50%;
   }
 }
@@ -24,7 +25,7 @@
 
 .dropdown {
   margin-left: 8px;
-  background-color: #1c1c1c;
+  background-color: $dark-grey;
   display: inline-block;
   padding: 8px;
   cursor: pointer;
@@ -36,7 +37,7 @@
   }
 
   .dropdown-list {
-    background-color: #1c1c1c;
+    background-color: $dark-grey;
     position: absolute;
     left: 0;
     right: 0;
