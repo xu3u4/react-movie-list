@@ -1,9 +1,13 @@
 const apiRoot = 'http://api.themoviedb.org/3';
 
 const fetchApi = (endpoint, action, store) => {
-  const fullPath = `${apiRoot + endpoint}?api_key=f0218cb368232fc7b7ce7c10c724a25b`;
+  const paramsConnector = endpoint.indexOf('?') >= 0 ? '&' : '?';
+  const fullPath = `${apiRoot + endpoint}${paramsConnector}api_key=f0218cb368232fc7b7ce7c10c724a25b`;
   return fetch(fullPath, {
-    method: 'GET',
+    method: action.method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: action.body && JSON.stringify(action.body)
   }).then((res) => {
     if (action.cb) action.cb(store.dispatch);

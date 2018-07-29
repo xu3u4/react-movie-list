@@ -1,0 +1,20 @@
+@import "~styles/variables";
+
+.movie-page {
+  padding: $section-spacing 0;
+}
+
+.movie-info {
+  color: $content-white;
+  width: 100px;
+  flex-grow: 1;
+  margin-left: $side-spacing;
+}
+
+.go-back {
+  font-size: 18px;
+
+  span {
+    color: $theme-yellow;
+  }
+}
