@@ -5,6 +5,7 @@
 }
 
 .page-title {
+  align-items: center;
   justify-content: space-between;
 
   .search-input {
@@ -12,10 +13,20 @@
     border: 1px solid $dark-grey;
     color: white;
     font-size: 15px;
+    font-style: italic;
     padding: 4px 8px;
     width: 250px;
-    margin: 1em;
+    height: 35px;
     max-width: 50%;
+
+    &:hover {
+      border: 1px solid $content-white;
+    }
+
+    &:focus {
+      background-color: $dark-grey;
+      border: 1px solid white;
+    }
   }
 }
 
@@ -31,10 +42,6 @@
   cursor: pointer;
   position: relative;
   width: 100px;
-
-  span {
-    color: $theme-yellow;
-  }
 
   .dropdown-list {
     background-color: $dark-grey;
@@ -64,6 +71,16 @@
     margin-top: -3px;
     border-width: 6px 6px 0 6px;
     border-style: solid;
+    border-color: $content-white transparent;
+  }
+}
+
+.onDropdown {
+  span {
+    color: $theme-yellow;
+  }
+
+  &:after {
     border-color: $theme-yellow transparent;
   }
 }

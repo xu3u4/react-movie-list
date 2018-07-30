@@ -20,7 +20,11 @@ const Dropdown = (props) => {
   return (
     <div className="dropdown-wrapper">
       <span className="menu-name">{menuName}:</span>
-      <div className="dropdown" role="menuitem" onClick={() => toggleDropdown(!showDropdown)}>
+      <div
+        className={`dropdown ${showDropdown && 'onDropdown'}`}
+        role="menuitem"
+        onClick={() => toggleDropdown(!showDropdown)}
+      >
         <span>{selected}</span>
         { showDropdown
           && (
