@@ -15,7 +15,7 @@ const Album = ({
   const overviewImages = images.slice(0, 5);
 
   return (
-    <React.Fragment>
+    <section className="gallery">
       <PopupSlider
         images={images}
         closeSlider={handleSliderClose}
@@ -28,17 +28,17 @@ const Album = ({
               key={image.file_path}
               onClick={handleSliderOpen}
               role="button"
+              className={`image-wrapper image-wrapper-${i}`}
             >
               <img
                 alt="movie images"
-                className={`images-${i}`}
                 src={imgSrc(image.file_path, 780)}
               />
             </div>
           ))
         }
       </figure>
-    </React.Fragment>
+    </section>
   );
 };
 
