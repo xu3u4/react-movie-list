@@ -14,7 +14,7 @@ export const getGenres = () => ({
   [CALL_API]: {
     endpoint: '/genre/movie/list',
     method: 'GET',
-    types: [actions.GET_GRERES_SUCCESS, actions.GET_GRERES_ERROR]
+    types: [actions.GET_GENRES_SUCCESS, actions.GET_GENRES_ERROR]
   }
 });
 

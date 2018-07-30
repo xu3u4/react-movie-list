@@ -3,16 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getMovies, searchMovie } from 'actions/home_action';
+import { isEmptyObj } from 'utils';
+import { genresObjType } from 'types';
+import { getMovies, getGenres, searchMovie } from 'actions/home_action';
 import Home from 'components/home';
 
 export class HomeContainer extends PureComponent {
   static propTypes = {
+    genres: genresObjType.isRequired,
     getMovies: PropTypes.func.isRequired,
-    searchMovie: PropTypes.func.isRequired,
+    getGenres: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
+    if (isEmptyObj(this.props.genres)) this.props.getGenres();
     this.props.getMovies();
   }
 
@@ -30,6 +34,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     getMovies,
+    getGenres,
     searchMovie,
   }, dispatch)
 );

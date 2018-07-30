@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { movieType } from 'types';
+import { movieType, genresObjType } from 'types';
 import { imgSrc } from 'utils';
 
 import './styles.scss';
 
-const MovieBlock = ({ movie }) => {
-  const movieGenres = movie.genre_ids.join(', ');
+const MovieBlock = ({ movie, genres }) => {
+  const movieGenres = movie.genre_ids.map((genreId) => (
+    genres[genreId]
+  ));
 
   return (
     <Link to={`/movie/${movie.id}`}>
@@ -21,14 +23,15 @@ const MovieBlock = ({ movie }) => {
           <b>{movie.vote_average}</b>
         </div>
         <h2>{movie.title}</h2>
-        <span>{movieGenres}</span>
+        <span>{movieGenres.join(', ')}</span>
       </div>
     </Link>
   );
 };
 
 MovieBlock.propTypes = {
-  movie: movieType.isRequired
+  movie: movieType.isRequired,
+  genres: genresObjType.isRequired,
 };
 
 export default MovieBlock;

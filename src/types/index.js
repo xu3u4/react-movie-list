@@ -1,13 +1,15 @@
 import {
-  shape, string, number, arrayOf
+  shape, string, number, arrayOf, objectOf
 } from 'prop-types';
 
 export const movieType = shape({
   id: number.isRequired,
-  poster_path: string.isRequired,
+  poster_path: string,
   title: string.isRequired,
   vote_average: number.isRequired,
 });
+
+export const genresObjType = objectOf(string);
 
 export const genresType = arrayOf(
   shape({

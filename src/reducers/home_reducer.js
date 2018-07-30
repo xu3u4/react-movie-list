@@ -2,7 +2,7 @@ import * as actions from 'constants/actionTypes';
 
 export const initialState = {
   movies: [],
-  genres: []
+  genres: {}
 };
 
 export default function HomeReducer(state = initialState, action) {
@@ -14,11 +14,17 @@ export default function HomeReducer(state = initialState, action) {
         ...state,
         movies: payload.results
       };
-    case actions.GET_GENRES_SUCCESS:
+    case actions.GET_GENRES_SUCCESS: {
+      const genreMapping = payload.genres.reduce((result, genre) => {
+        result[genre.id] = genre.name;
+        return result;
+      }, {});
+
       return {
         ...state,
-        genres: payload.genres
+        genres: genreMapping
       };
+    }
     default:
       return state;
   }
