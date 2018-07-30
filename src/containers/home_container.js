@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { getMovies } from 'actions/home_action';
+import { getMovies, searchMovie } from 'actions/home_action';
 import Home from 'components/home';
 
 export class HomeContainer extends PureComponent {
   static propTypes = {
-    getMovies: PropTypes.func.isRequired
+    getMovies: PropTypes.func.isRequired,
+    searchMovie: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -29,6 +30,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
     getMovies,
+    searchMovie,
   }, dispatch)
 );
 

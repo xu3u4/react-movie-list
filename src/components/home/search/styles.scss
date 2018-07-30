@@ -7,6 +7,18 @@
 .page-title {
   align-items: center;
   justify-content: space-between;
+}
+
+.search-bar {
+  height: 35px;
+
+  button {
+    border: 0;
+    cursor: pointer;
+    height: 100%;
+    background-color: transparent;
+    font-size: 18px;
+  }
 
   .search-input {
     background-color: transparent;
@@ -15,9 +27,7 @@
     font-size: 15px;
     font-style: italic;
     padding: 4px 8px;
-    width: 250px;
-    height: 35px;
-    max-width: 50%;
+    height: 100%;
 
     &:hover {
       border: 1px solid $content-white;

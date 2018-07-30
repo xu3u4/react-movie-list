@@ -1,5 +1,6 @@
 import { CALL_API } from 'middleware/api';
 import * as actions from 'constants/actionTypes';
+import { paramsToQueryString } from 'utils';
 
 export const getMovies = () => ({
   [CALL_API]: {
@@ -16,3 +17,15 @@ export const getGenres = () => ({
     types: [actions.GET_GRERES_SUCCESS, actions.GET_GRERES_ERROR]
   }
 });
+
+export const searchMovie = (params) => {
+  const query = paramsToQueryString(params);
+
+  return {
+    [CALL_API]: {
+      endpoint: `/search/movie${query}`,
+      method: 'GET',
+      types: [actions.SEARCH_MOVIE_SUCCESS, actions.SEARCH_MOVIE_ERROR]
+    }
+  };
+};
