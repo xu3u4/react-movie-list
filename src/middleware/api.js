@@ -1,8 +1,11 @@
+import { paramsToQueryString } from 'utils';
+
 const apiRoot = 'http://api.themoviedb.org/3';
 
 const fetchApi = (endpoint, action, store) => {
-  const paramsConnector = endpoint.indexOf('?') >= 0 ? '&' : '?';
-  const fullPath = `${apiRoot + endpoint}${paramsConnector}api_key=f0218cb368232fc7b7ce7c10c724a25b`;
+  const allParams = { api_key: 'f0218cb368232fc7b7ce7c10c724a25b', ...action.params };
+  const fullPath = `${apiRoot + endpoint}${paramsToQueryString(allParams)}`;
+
   return fetch(fullPath, {
     method: action.method,
     headers: {

@@ -8,6 +8,7 @@ export const imgSrc = (imgPath, width = 0) => {
 };
 
 export const paramsToQueryString = (params) => {
+  if (isEmptyObj(params)) return '';
   const keys = Object.keys(params);
 
   return keys.reduce((urlQuery, key) => {
