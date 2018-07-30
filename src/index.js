@@ -12,7 +12,7 @@ import RootReducer from 'reducers';
 import { CommonRoute } from 'components/common/layout';
 import Home from 'containers/home_container';
 import Movie from 'containers/movie_container';
-import 'styles/style.scss';
+import 'assets/styles/style.scss';
 
 const stores = createStore(RootReducer, applyMiddleware(ReduxThunk, api));
 
