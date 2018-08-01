@@ -14,10 +14,13 @@ const Movie = ({ movieDetails }) => {
   if (isEmptyObj(movieDetails)) return <Loading />;
 
   return (
-    <div className="flex movie-page">
+    <div className="movie-page">
+      <Link to="/home" className="go-back go-back-top">
+        <IconText icon="icon-left-arrow" text="Back to list" />
+      </Link>
       <Album images={movieDetails.images.backdrops} />
       <section className="movie-info">
-        <Link to="/home" className="go-back">
+        <Link to="/home" className="go-back go-back-right">
           <IconText icon="icon-left-arrow" text="Back to list" />
         </Link>
         <h1>{movieDetails.title}</h1>

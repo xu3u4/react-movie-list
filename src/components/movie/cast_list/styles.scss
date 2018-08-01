@@ -4,7 +4,7 @@
   align-items: center;
   margin: $section-spacing 0;
   display: grid;
-  grid-template-columns: 15% 35% 10% 40%;
+  grid-template-columns: 17% 35% 10% 38%;
 
   .actor-img {
     width: 4em;
@@ -12,5 +12,10 @@
     border-radius: 2em;
     box-shadow: 0px 0px 3px 4px $dark-grey;
     object-fit: cover;
+
+    @media screen and (max-width: $medium-screen) {
+      width: 3em;
+      height: 3em;
+    }
   }
 }

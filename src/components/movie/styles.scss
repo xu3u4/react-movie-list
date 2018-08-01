@@ -2,18 +2,48 @@
 
 .movie-page {
   padding: $section-spacing 0;
+  display: flex;
+
+  @media screen and (max-width: $medium-screen) {
+    display: block;
+  }
 }
 
 .movie-info {
   color: $content-white;
   flex-basis: 60%;
   margin-left: $side-spacing;
+
+  @media screen and (max-width: $large-screen) {
+    margin-left: $section-spacing/2;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    margin-left: 0;
+  }
 }
 
 .go-back {
   font-size: 18px;
+  display: block;
 
   span {
     color: $theme-yellow;
+  }
+
+  &-top {
+    margin-bottom: 12px;
+  }
+
+  @media screen and (max-width: $medium-screen) {
+    &-right {
+      display: none;
+    };
+  }
+
+  @media screen and (min-width: $medium-screen) {
+    &-top {
+      display: none;
+    };
   }
 }

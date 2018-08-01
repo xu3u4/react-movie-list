@@ -13,4 +13,8 @@ header {
 
 main {
   padding: 10px $side-spacing;
+
+  @media screen and (max-width: $large-screen) {
+    padding: 10px $side-spacing/2;
+  }
 }

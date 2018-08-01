@@ -7,6 +7,10 @@
 .movie-rating {
   flex-basis: 25%;
   padding-right: 70px;
+
+  @media screen and (max-width: $large-screen) {
+    padding-right: 35px;
+  }
 }
 
 .detail-list {
