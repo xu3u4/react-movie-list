@@ -45,3 +45,13 @@ export const movieDetailsType = shape({
   release_date: string,
   runtime: number,
 });
+
+export const selectedOptionType = shape({
+  sort_by: string,
+  with_genres: string,
+});
+
+export const menuItemType = shape({
+  name: string.isRequired,
+  field: string.isRequired,
+});

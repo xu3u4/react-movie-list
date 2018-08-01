@@ -3,39 +3,48 @@ import PropTypes from 'prop-types';
 import {
   pure,
   compose,
-  withState
+  withProps,
+  withState,
 } from 'recompose';
 
+import { selectedOptionType, menuItemType } from 'types';
 import './styles.scss';
 
 const Dropdown = (props) => {
   const {
-    menuName,
+    menuTitle,
     menuItems,
     selected,
+    selectedItem,
     toggleDropdown,
-    showDropdown
+    showDropdown,
+    selectDropdown,
   } = props;
 
   return (
     <div className="dropdown-wrapper">
-      <span className="menu-name">{menuName}:</span>
+      <span className="menu-name">{menuTitle.name}:</span>
       <div
         className={`dropdown ${showDropdown && 'onDropdown'}`}
         role="menuitem"
         onClick={() => toggleDropdown(!showDropdown)}
       >
-        <span>{selected}</span>
-        { showDropdown
-          && (
+        <span>{selectedItem.name}</span>
+        { showDropdown && (
           <ul className="dropdown-list">
             {
               menuItems.map((menuItem) => (
-                <li key={`${menuName}-${menuItem.name}`}>{menuItem.name}</li>
+                <li
+                  key={`${menuTitle.field}-${menuItem.name}`}
+                  onClick={
+                    () => selectDropdown({ ...selected, [menuTitle.field]: menuItem.field })
+                  }
+                >
+                  {menuItem.name}
+                </li>
               ))
             }
-          </ul>
-          )
+          </ul>)
         }
       </div>
     </div>
@@ -43,18 +52,26 @@ const Dropdown = (props) => {
 };
 
 Dropdown.propTypes = {
-  menuName: PropTypes.string.isRequired,
+  menuTitle: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    field: PropTypes.string.isRequired,
+  }).isRequired,
   menuItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    })
+    menuItemType
   ).isRequired,
-  selected: PropTypes.string.isRequired,
+  selected: selectedOptionType.isRequired,
+  selectedItem: menuItemType.isRequired,
   toggleDropdown: PropTypes.func.isRequired,
-  showDropdown: PropTypes.bool.isRequired
+  showDropdown: PropTypes.bool.isRequired,
+  selectDropdown: PropTypes.func.isRequired,
 };
 
 export default compose(
   withState('showDropdown', 'toggleDropdown', false),
+  withProps(({ menuItems, selected, menuTitle }) => {
+    const selectedItem = menuItems.find((menuItem) => menuItem.field === selected[menuTitle.field]);
+
+    return { selectedItem };
+  }),
   pure
 )(Dropdown);

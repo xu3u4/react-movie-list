@@ -14,6 +14,30 @@ export const paramsToQueryString = (params) => {
   return keys.reduce((urlQuery, key) => {
     const connector = urlQuery.length > 1 ? '&' : '';
 
-    return `${urlQuery}${connector}${key}=${params[key]}`;
+    return params[key].length ? `${urlQuery}${connector}${key}=${params[key]}` : urlQuery;
   }, '?');
+};
+
+export const queryStringToParams = (query) => {
+  if (query.length === 0) return {};
+
+  const params = {};
+  const queries = query.substring(1).split('&');
+
+  for (let i = 0; i < queries.length; i++) {
+    const values = queries[i].split('=');
+    params[values[0]] = values[1] || '';
+  }
+  return params;
+};
+
+export const updateUrlParams = (newParams, $window = window) => {
+  const { pathname, search } = $window.location;
+
+  if (isEmptyObj(newParams)) return pathname;
+
+  const oldParams = queryStringToParams(search);
+  const queryParams = paramsToQueryString({ ...oldParams, ...newParams });
+
+  window.history.replaceState({}, '', `${pathname}${queryParams}`);
 };

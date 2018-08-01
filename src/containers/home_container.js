@@ -3,21 +3,41 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { isEmptyObj } from 'utils';
-import { genresObjType } from 'types';
-import { getMovies, getGenres, searchMovie } from 'actions/home_action';
+import { isEmptyObj, queryStringToParams } from 'utils';
+import { genresObjType, selectedOptionType } from 'types';
+import {
+  getMovies, getGenres, searchMovie, selectDropdown
+} from 'actions/home_action';
 import Home from 'components/home';
 
 export class HomeContainer extends PureComponent {
   static propTypes = {
+    location: PropTypes.shape({
+      search: PropTypes.string.isRequired
+    }).isRequired,
     genres: genresObjType.isRequired,
     getMovies: PropTypes.func.isRequired,
     getGenres: PropTypes.func.isRequired,
+    selectDropdown: PropTypes.func.isRequired,
+    selected: selectedOptionType.isRequired,
   }
 
   componentDidMount() {
-    if (isEmptyObj(this.props.genres)) this.props.getGenres();
-    this.props.getMovies();
+    const {
+      genres,
+      getGenres,
+      location,
+      selected,
+      selectDropdown,
+    } = this.props;
+
+    if (isEmptyObj(genres)) getGenres();
+
+    const { sort_by, with_genres } = { // eslint-disable-line camelcase
+      ...selected, ...queryStringToParams(location.search)
+    };
+
+    selectDropdown({ sort_by, with_genres });
   }
 
   render() {
@@ -36,6 +56,7 @@ const mapDispatchToProps = (dispatch) => (
     getMovies,
     getGenres,
     searchMovie,
+    selectDropdown,
   }, dispatch)
 );
 

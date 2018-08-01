@@ -1,8 +1,15 @@
 import * as actions from 'constants/actionTypes';
+import {
+  ORDER_BY_TITLE, FILTER_BY_TITLE, orderBy, filterBy
+} from 'constants/dropdown_values';
 
 export const initialState = {
   movies: [],
-  genres: {}
+  genres: {},
+  selected: {
+    [ORDER_BY_TITLE.field]: orderBy[0].field,
+    [FILTER_BY_TITLE.field]: filterBy[0].field
+  },
 };
 
 export default function HomeReducer(state = initialState, action) {
@@ -25,6 +32,11 @@ export default function HomeReducer(state = initialState, action) {
         genres: genreMapping
       };
     }
+    case actions.SELECT_DROPDOWN:
+      return {
+        ...state,
+        selected: { ...action.payload }
+      };
     default:
       return state;
   }

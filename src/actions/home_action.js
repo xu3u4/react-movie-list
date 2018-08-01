@@ -1,5 +1,6 @@
 import { CALL_API } from 'middleware/api';
 import * as actions from 'constants/actionTypes';
+import { updateUrlParams } from 'utils';
 
 export const getMovies = (params) => ({
   [CALL_API]: {
@@ -27,4 +28,13 @@ export const searchMovie = (params) => {
       types: [actions.SEARCH_MOVIE_SUCCESS, actions.SEARCH_MOVIE_ERROR]
     }
   };
+};
+
+export const selectDropdown = (selected = {}) => (dispatch) => {
+  dispatch({
+    type: actions.SELECT_DROPDOWN,
+    payload: selected,
+  });
+  updateUrlParams(selected);
+  dispatch(getMovies(selected));
 };

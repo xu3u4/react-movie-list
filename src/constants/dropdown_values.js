@@ -1,35 +1,55 @@
 export const orderBy = [
   {
-    name: 'Title'
+    name: 'Popularity',
+    field: 'popularity.desc',
   },
   {
-    name: 'Release date'
+    name: 'Title',
+    field: 'original_title.asc',
   },
   {
-    name: 'Vote average'
+    name: 'Release date',
+    field: 'release_date.desc',
   },
   {
-    name: 'Popularity'
+    name: 'Vote average',
+    field: 'vote_average.desc',
   },
 ];
 
 export const filterBy = [
   {
-    name: 'All Genre'
+    name: 'All Genre',
+    field: '',
   },
   {
-    name: 'Action'
+    name: 'Action',
+    field: '28',
   },
   {
-    name: 'Adventure'
+    name: 'Adventure',
+    field: '12',
   },
   {
-    name: 'Animation'
+    name: 'Animation',
+    field: '16',
   },
   {
-    name: 'Comedy'
+    name: 'Comedy',
+    field: '35',
   },
   {
-    name: 'Crime'
+    name: 'Crime',
+    field: '80',
   },
 ];
+
+export const ORDER_BY_TITLE = {
+  name: 'Order By',
+  field: 'sort_by',
+};
+
+export const FILTER_BY_TITLE = {
+  name: 'Filter By',
+  field: 'with_genres',
+};

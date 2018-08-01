@@ -7,12 +7,17 @@ import {
   withHandlers,
 } from 'recompose';
 
-import { orderBy, filterBy } from 'constants/dropdown_values';
+import {
+  ORDER_BY_TITLE, FILTER_BY_TITLE, orderBy, filterBy
+} from 'constants/dropdown_values';
 import FontIcon from 'components/common/font-icon';
+import { selectedOptionType } from 'types';
 import Dropdown from './dropdown';
 import './styles.scss';
 
-export const Search = ({ onInput, onSearch }) => {
+export const Search = ({
+  onInput, onSearch, selectDropdown, selected
+}) => {
   return (
     <div className="browse">
       <div className="top-nav page-title flex">
@@ -31,14 +36,16 @@ export const Search = ({ onInput, onSearch }) => {
       </div>
       <div className="top-nav flex">
         <Dropdown
-          menuName="Order By"
+          menuTitle={ORDER_BY_TITLE}
           menuItems={orderBy}
-          selected="A"
+          selectDropdown={selectDropdown}
+          selected={selected}
         />
         <Dropdown
-          menuName="Filter By"
+          menuTitle={FILTER_BY_TITLE}
           menuItems={filterBy}
-          selected="B"
+          selectDropdown={selectDropdown}
+          selected={selected}
         />
       </div>
     </div>
@@ -48,6 +55,8 @@ export const Search = ({ onInput, onSearch }) => {
 Search.propTypes = {
   onInput: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
+  selectDropdown: PropTypes.func.isRequired,
+  selected: selectedOptionType.isRequired,
 };
 
 export default compose(
