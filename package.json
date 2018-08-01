@@ -4,7 +4,7 @@
   "description": "Browse the movie you like",
   "main": "index.html",
   "scripts": {
-    "production": "export NODE_ENV=production && webpack && npm start",
+    "production": "webpack --config ./webpack.prod.config.js",
     "dev": "export NODE_ENV=development && webpack-dev-server --devtool eval --progress --colors --content-base dist",
     "eslint": "eslint src/js test",
     "fix-eslint": "eslint src --fix",

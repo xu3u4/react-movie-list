@@ -4,8 +4,5 @@ node_modules
 # logs
 npm-debug.log
 
-# webpack
-dist/bundle.js
-
 # Mac store
 *.DS_Store*
