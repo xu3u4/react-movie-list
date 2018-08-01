@@ -8,7 +8,14 @@
 }
 
 .movie-poster {
-  width: 100%;
+  background-color: $dark-grey;
+  min-height: 300px;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .vote {

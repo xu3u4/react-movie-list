@@ -33,6 +33,7 @@ const Album = ({
               <img
                 alt="movie images"
                 src={imgSrc(image.file_path, 780)}
+                key={image.file_path}
               />
             </div>
           ))

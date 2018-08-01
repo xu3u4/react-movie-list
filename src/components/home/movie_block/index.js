@@ -14,11 +14,13 @@ const MovieBlock = ({ movie, genres }) => {
   return (
     <Link to={`/movie/${movie.id}`}>
       <div className="movie-block">
-        <img
-          src={imgSrc(movie.poster_path, 342)}
-          alt={movie.title}
-          className="movie-poster"
-        />
+        <div className="flex movie-poster">
+          <img
+            src={imgSrc(movie.poster_path, 342, 'poster')}
+            alt={movie.title}
+            key={movie.poster_path}
+          />
+        </div>
         <div className="vote">
           <b>{movie.vote_average}</b>
         </div>
