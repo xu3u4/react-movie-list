@@ -6,6 +6,17 @@ export const getMovie = (movieId) => ({
     params: { append_to_response: 'credits,images' },
     endpoint: `/movie/${movieId}`,
     method: 'GET',
-    types: [actions.GET_MOVIE_SUCCESS, actions.GET_MOVIE_ERROR]
+    types: [
+      actions.GET_MOVIE_REQUEST,
+      {
+        type: actions.GET_MOVIE_SUCCESS,
+        payload: (action, state, res) => {
+          return res.json().then(json => {
+            return json;
+          });
+        }
+      },
+      actions.GET_MOVIE_ERROR
+    ]
   }
 });

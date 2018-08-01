@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { movieType, genresObjType, selectedOptionType } from 'types';
+import Loading from 'components/common/loading';
 import Browse from './search';
 import MovieBlock from './movie_block';
 import './styles.scss';
@@ -15,8 +16,6 @@ const Home = (props) => {
     selected
   } = props;
 
-  if (movies.length === 0) return null;
-
   return (
     <React.Fragment>
       <Browse
@@ -24,15 +23,21 @@ const Home = (props) => {
         selectDropdown={selectDropdown}
         selected={selected}
       />
-      <section className="movie-list">
-        {movies.map((movie) => (
-          <MovieBlock
-            movie={movie}
-            genres={genres}
-            key={`movie-${movie.id}`}
-          />
-        ))}
-      </section>
+      {
+        movies.length === 0 ? (
+          <Loading />
+        ) : (
+          <section className="movie-list">
+            {movies.map((movie) => (
+              <MovieBlock
+                movie={movie}
+                genres={genres}
+                key={`movie-${movie.id}`}
+              />
+            ))}
+          </section>
+        )
+      }
     </React.Fragment>
   );
 };

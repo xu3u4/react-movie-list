@@ -1,0 +1,11 @@
+@import "~assets/styles/variables";
+$loading-width: 80px;
+
+.loading {
+  width: $loading-width;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -$loading-width / 2;
+  margin-left: -$loading-width / 2;
+}

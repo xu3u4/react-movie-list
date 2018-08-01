@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import { movieDetailsType } from 'types';
 import { isEmptyObj } from 'utils';
 import IconText from 'components/common/icon-text';
+import Loading from 'components/common/loading';
 import Album from './album';
 import MovieDetails from './movie_details';
 import CastList from './cast_list';
 import './styles.scss';
 
 const Movie = ({ movieDetails }) => {
-  if (isEmptyObj(movieDetails)) return null;
+  if (isEmptyObj(movieDetails)) return <Loading />;
 
   return (
     <div className="flex movie-page">

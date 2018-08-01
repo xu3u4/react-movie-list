@@ -31,12 +31,16 @@ export default store => next => action => {
     return finalAction;
   };
 
-  const [successType, failureType] = types;
+  const [requestType, successType, failureType] = types;
+
+  next(actionWith({
+    type: requestType
+  }));
 
   return fetchApi(endpoint, callAPI, store)
     .then(
       payload => next(actionWith({
-        type: successType,
+        type: successType.type,
         payload
       })),
       error => next(actionWith({
