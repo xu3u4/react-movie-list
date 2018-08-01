@@ -1,6 +1,6 @@
 import { paramsToQueryString } from 'utils';
 
-const apiRoot = 'http://api.themoviedb.org/3';
+const apiRoot = 'https://api.themoviedb.org/3';
 
 const fetchApi = (endpoint, action, store) => {
   const allParams = { api_key: 'f0218cb368232fc7b7ce7c10c724a25b', ...action.params };

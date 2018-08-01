@@ -18,9 +18,9 @@ const stores = createStore(RootReducer, applyMiddleware(ReduxThunk, api));
 
 ReactDOM.render(
   <Provider store={stores}>
-    <BrowserRouter>
+    <BrowserRouter basename="/react-movie-list">
       <Switch>
-        <Route exact path="/">
+        <Route path="/">
           <Redirect to="/home" />
         </Route>
         <CommonRoute path="/home" component={Home} />
