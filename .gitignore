@@ -6,3 +6,5 @@ npm-debug.log
 
 # Mac store
 *.DS_Store*
+
+dist
