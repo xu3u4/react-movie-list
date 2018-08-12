@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 
 import { movieType, genresObjType } from 'types';
 import { imgSrc } from 'utils';
@@ -15,11 +16,13 @@ const MovieBlock = ({ movie, genres }) => {
     <Link to={`/movie/${movie.id}`}>
       <div className="movie-block">
         <div className="flex movie-poster">
-          <img
-            src={imgSrc(movie.poster_path, 342, 'poster')}
-            alt={movie.title}
-            key={movie.poster_path}
-          />
+          <LazyLoad height={300}>
+            <img
+              src={imgSrc(movie.poster_path, 342, 'poster')}
+              alt={movie.title}
+              key={movie.poster_path}
+            />
+          </LazyLoad>
         </div>
         <div className="vote">
           <b>{movie.vote_average}</b>
