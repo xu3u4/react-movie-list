@@ -24,13 +24,15 @@ export const imgSrc = (imgPath = '', width = 0, type = 'poster') => {
 
 export const paramsToQueryString = (params) => {
   if (isEmptyObj(params)) return '';
+  let s = '';
   const keys = Object.keys(params);
+  keys.forEach(k => {
+    if (k === keys.slice(0)[0]) s += '?';
+    s += `${k}=${encodeURIComponent(params[k])}`;
+    if (k !== keys.slice(-1)[0]) s += '&';
+  });
 
-  return keys.reduce((urlQuery, key) => {
-    const connector = urlQuery.length > 1 ? '&' : '';
-
-    return params[key].length ? `${urlQuery}${connector}${key}=${params[key]}` : urlQuery;
-  }, '?');
+  return s;
 };
 
 export const queryStringToParams = (query) => {
@@ -55,4 +57,14 @@ export const updateUrlParams = (newParams, $window = window) => {
   const queryParams = paramsToQueryString({ ...oldParams, ...newParams });
 
   window.history.replaceState({}, '', `${pathname}${queryParams}`);
+};
+
+export const numberRange = (begin, end) => {
+  const result = [];
+
+  for (let i = begin; i <= end; i++) {
+    result.push(i);
+  }
+
+  return result;
 };

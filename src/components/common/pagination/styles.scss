@@ -1,0 +1,60 @@
+@import "~assets/styles/variables";
+
+.pagination-wrapper {
+  display: flex;
+  margin: $section-spacing 0;
+}
+
+.paginate-bar {
+  margin: 8px auto;
+  text-align: center;
+
+  button {
+    border-width: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+
+    @media screen and (max-width: $small-screen) {
+      width: 35px;
+      height: 35px;
+    }
+
+    &.is-active {
+      background-color: $theme-yellow;
+      color: $theme-grey;
+      cursor: default;
+    }
+  }
+}
+
+.paginate-button {
+  border-radius: 5px;
+  color: $light-grey;
+  background-color: #555555;
+  margin: 0 6px;
+
+  &:hover {
+    background-color: white;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    margin: 0 8px 5px 0;
+  }
+}
+
+.arrow-button {
+  background-color: transparent;
+  color: $light-grey;
+  margin: 0;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.paginate-ellipsis {
+  cursor: default;
+}

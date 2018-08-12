@@ -4,7 +4,9 @@ import loading from 'assets/images/loading.svg';
 import './styles.scss';
 
 const Loading = () => (
-  <img src={loading} alt="loading..." className="loading" />
+  <div className="flex">
+    <img src={loading} alt="loading..." className="loading" />
+  </div>
 );
 
 export default Loading;

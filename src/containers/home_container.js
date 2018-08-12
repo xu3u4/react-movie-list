@@ -28,16 +28,16 @@ export class HomeContainer extends PureComponent {
       getGenres,
       location,
       selected,
-      selectDropdown,
+      getMovies,
     } = this.props;
 
     if (isEmptyObj(genres)) getGenres();
 
-    const { sort_by, with_genres } = { // eslint-disable-line camelcase
+    const { sort_by, with_genres, page } = { // eslint-disable-line camelcase
       ...selected, ...queryStringToParams(location.search)
     };
 
-    selectDropdown({ sort_by, with_genres });
+    getMovies({ sort_by, with_genres, page });
   }
 
   render() {

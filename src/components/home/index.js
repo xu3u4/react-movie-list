@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  pure,
+  compose,
+  withHandlers,
+} from 'recompose';
 
 import { movieType, genresObjType, selectedOptionType } from 'types';
 import Loading from 'components/common/loading';
+import Pagination from 'components/common/pagination';
 import Browse from './search';
 import MovieBlock from './movie_block';
 import './styles.scss';
@@ -13,7 +19,9 @@ const Home = (props) => {
     searchMovie,
     genres,
     selectDropdown,
-    selected
+    selected,
+    totalPage,
+    handlePageChange,
   } = props;
 
   return (
@@ -38,6 +46,14 @@ const Home = (props) => {
           </section>
         )
       }
+      {
+        totalPage > 0 && (
+          <Pagination
+            totalPage={totalPage}
+            onPageChange={handlePageChange}
+          />
+        )
+      }
     </React.Fragment>
   );
 };
@@ -53,6 +69,17 @@ Home.propTypes = {
   searchMovie: PropTypes.func.isRequired,
   selectDropdown: PropTypes.func.isRequired,
   selected: selectedOptionType.isRequired,
+  totalPage: PropTypes.number.isRequired,
+  handlePageChange: PropTypes.func.isRequired,
 };
 
-export default Home;
+export default compose(
+  withHandlers({
+    handlePageChange: ({ getMovies, selected }) => (pageNumber) => {
+      window.scrollTo(0, 0);
+
+      getMovies({ ...selected, page: pageNumber });
+    }
+  }),
+  pure
+)(Home);

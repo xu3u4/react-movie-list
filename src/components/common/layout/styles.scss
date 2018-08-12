@@ -17,4 +17,8 @@ main {
   @media screen and (max-width: $large-screen) {
     padding: 10px $side-spacing/2;
   }
+
+  @media screen and (max-width: $medium-screen) {
+    padding: 10px;
+  }
 }
