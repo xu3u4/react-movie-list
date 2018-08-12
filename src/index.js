@@ -20,7 +20,7 @@ ReactDOM.render(
   <Provider store={stores}>
     <BrowserRouter basename="/react-movie-list">
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Redirect to="/home" />
         </Route>
         <CommonRoute path="/home" component={Home} />
